@@ -14,6 +14,7 @@ public class CrudRestController {
     private CrudService service;
 
     @GetMapping("/getpetlist")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Pet> fetchPetList() {
 
         List<Pet> pets = new ArrayList<Pet>();
@@ -25,18 +26,27 @@ public class CrudRestController {
     }
 
     @PostMapping("/addpet")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Pet savePet(@RequestBody Pet pet) {
 
         return service.savePetToDB(pet);
     }
 
     @GetMapping("/getpetbyid/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Pet fetchPetById(@PathVariable int id) {
 
         return service.fetchPetById(id).get();
     }
 
+//    @GetMapping("/editpet")
+//    @CrossOrigin(origins = "http://localhost:4200")
+//    public String updatePet(@RequestBody Pet pet) {
+//        return service.editPet();
+//    }
+
     @DeleteMapping("/deletepetbyid/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     public String deletePetById(@PathVariable int id) {
 
         return service.deletePetById(id);
